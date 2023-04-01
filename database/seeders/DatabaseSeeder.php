@@ -25,9 +25,24 @@ class DatabaseSeeder extends Seeder
 
         User::insert([
             [
-                'name' => 'Lutfi Damirich',
+                'name' => 'Damirich Team',
                 'email' => 'development@damirich.id',
                 'password' => bcrypt('password.'),
+            ],
+            [
+                'name' => 'Marketing Team',
+                'email' => 'marketing@okssaart.com',
+                'password' => bcrypt('MARKETING@okssaart.com'),
+            ],
+            [
+                'name' => 'Produksi Team',
+                'email' => 'produksi@okssaart.com',
+                'password' => bcrypt('PRODUKSI@okssaart.com'),
+            ],
+            [
+                'name' => 'FInance Team',
+                'email' => 'finance@okssaart.com',
+                'password' => bcrypt('FINANCE@okssaart.com'),
             ],
         ]);
 

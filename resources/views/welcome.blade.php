@@ -6,10 +6,10 @@
     <title>Okssa Art | Tracking System</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Silicon - Multipurpose Technology Bootstrap Template">
-    <meta name="keywords"
-        content="bootstrap, business, creative agency, mobile app showcase, saas, fintech, finance, online courses, software, medical, conference landing, services, e-commerce, shopping cart, multipurpose, shop, ui kit, marketing, seo, landing, blog, portfolio, html5, css3, javascript, gallery, slider, touch, creative">
-    <meta name="author" content="Createx Studio">
+    <meta name="description"
+        content="Okssa Art Studio - CV Okssa Art was founded by Widodo Santosa, S.Sn. in 1998. At first the company was established only as a home industry, but along with increasing consumer demand, in 2022 Okssa Art was registered as a business entity in the form of a CV.">
+    <meta name="keywords" content="creative, furniture, craft, handicrafts, art products">
+    <meta name="author" content="Okssa Art Studio">
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -193,8 +193,9 @@
         <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
             <div class="container px-3">
                 <a href="{{ route('root') }}" class="navbar-brand pe-3">
-                    <img src="assets/img/logo.svg" width="47" alt="Silicon">
-                    Silicon
+                    <img src="https://okssaart.com/wp-content/uploads/2023/03/v1_original-165x52.webp" width=""
+                        alt="Silicon">
+
                 </a>
                 <div id="navbarNav" class="offcanvas offcanvas-end">
                     <div class="offcanvas-header border-bottom">
