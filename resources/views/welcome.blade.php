@@ -208,11 +208,11 @@
                             <li class="nav-item">
                                 <a href="https://okssaart.com" class="nav-link" target="_blank">Home</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {{ Request::is('tracking') ? 'active' : '' }}">
                                 <a href="{{ route('root') }}" class="nav-link">Tracking</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Product Catalog</a>
+                                <a href="#" class="nav-link">Product Catalog</a>
                             </li>
 
                         </ul>

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\TrackingImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TrackingController extends Controller
 {
@@ -18,8 +19,17 @@ class TrackingController extends Controller
      */
     public function index()
     {
+
+        if (Auth::user()->role_id == 1) {
+            $trackings = Tracking::all();
+        } else if (Auth::user()->role_id == 3) {
+            $trackings = Tracking::all();
+        } else {
+            $trackings = Tracking::where('departement_id', 1)->get();
+        }
+
         return view('dashboard', [
-            'trackings' => Tracking::all(),
+            'trackings' => $trackings,
             'statuses' => Status::all(),
             'departements' => Departement::all(),
             'employees' => Employee::all(),

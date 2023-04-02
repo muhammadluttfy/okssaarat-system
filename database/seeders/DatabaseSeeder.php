@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Status;
 use App\Models\Employee;
@@ -23,24 +24,37 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        Role::insert([
+            [
+                'name' => 'Administrator',
+                'slug' => 'administrator',
+            ],
+            [
+                'name' => 'Produksi',
+                'slug' => 'produksi',
+            ],
+            [
+                'name' => 'Finance',
+                'slug' => 'finance',
+            ],
+        ]);
+
         User::insert([
             [
+                'role_id' => '1',
                 'name' => 'Damirich Team',
                 'email' => 'development@damirich.id',
                 'password' => bcrypt('password.'),
             ],
             [
-                'name' => 'Marketing Team',
-                'email' => 'marketing@okssaart.com',
-                'password' => bcrypt('MARKETING@okssaart.com'),
-            ],
-            [
+                'role_id' => '2',
                 'name' => 'Produksi Team',
                 'email' => 'produksi@okssaart.com',
                 'password' => bcrypt('PRODUKSI@okssaart.com'),
             ],
             [
-                'name' => 'FInance Team',
+                'role_id' => '3',
+                'name' => 'Finance Team',
                 'email' => 'finance@okssaart.com',
                 'password' => bcrypt('FINANCE@okssaart.com'),
             ],
@@ -59,10 +73,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Departement::insert([
-            [
-                'name' => 'Marketing & Sales',
-                'slug' => 'marketing-sales',
-            ],
             [
                 'name' => 'Produksi',
                 'slug' => 'produksi',
