@@ -88,10 +88,13 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Kiswanto',
             ],
             [
-                'name' => 'Yulli',
+                'name' => 'Yuli',
             ],
             [
                 'name' => 'Budi',
+            ],
+            [
+                'name' => 'Murjiyanto',
             ],
         ]);
     }
