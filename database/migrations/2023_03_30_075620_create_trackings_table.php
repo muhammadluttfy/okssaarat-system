@@ -14,12 +14,18 @@ return new class extends Migration
         Schema::create('trackings', function (Blueprint $table) {
             $table->id();
             $table->string('po_number');
-            $table->string('employee_id');
-            $table->string('departement_id');
-            $table->string('status_id');
-            $table->string('date');
-            $table->text('description');
-            $table->text('image');
+            $table->string('employee_id')->nullable();
+            $table->string('progress_po_id')->nullable();
+
+            $table->string('departement_id')->nullable();
+            $table->string('production_po_id')->nullable();
+            $table->string('finance_po_id')->nullable();
+            $table->string('marketing_po_id')->nullable();
+
+            $table->string('status_id')->nullable();
+            $table->string('date')->nullable();
+            $table->text('description')->nullable();
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

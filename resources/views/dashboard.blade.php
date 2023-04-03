@@ -195,23 +195,23 @@
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="departement" class="form-label">Departemen</label>
-                                                    <select class="form-select" name="departement_id"
-                                                        id="departement">
-                                                        @foreach ($departements as $departement)
-                                                            @if (old('departement_id') == $departement->id)
-                                                                <option value="{{ $departement->id }}" selected>
-                                                                    {{ $departement->name }}</option>
+                                                    <label for="progress_po" class="form-label">Progress PO</label>
+                                                    <select class="form-select" name="progress_po_id"
+                                                        id="progress_po">
+                                                        @foreach ($progress_pos as $progress_po)
+                                                            @if (old('progress_po_id') == $progress_po->id)
+                                                                <option value="{{ $progress_po->id }}" selected>
+                                                                    {{ $progress_po->name }}</option>
                                                             @else
-                                                                <option value="{{ $departement->id }}">
-                                                                    {{ $departement->name }}</option>
+                                                                <option value="{{ $progress_po->id }}">
+                                                                    {{ $progress_po->name }}</option>
                                                             @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="status" class="form-label">Tahap
-                                                        Pekerjaan
+                                                    <label for="status" class="form-label">
+                                                        Status Progress
                                                     </label>
                                                     <select class="form-select" name="status_id" id="status">
                                                         @foreach ($statuses as $status)
@@ -267,8 +267,8 @@
                                         <tr>
                                             <th>Nomor PO</th>
                                             <th>Nama Karyawan</th>
-                                            <th>Departemen</th>
-                                            <th>Tahap Pekerjaan</th>
+                                            <th>Progress PO</th>
+                                            <th>Status Progress</th>
                                             <th>Tanggal Update</th>
                                             <th>Detail Pekerjaan</th>
                                             <th>Gambar</th>
@@ -279,10 +279,11 @@
                                         <tr>
                                             <th>Nomor PO</th>
                                             <th>Nama Karyawan</th>
-                                            <th>Departemen</th>
-                                            <th>Tahap Pekerjaan</th>
+                                            <th>Progress PO</th>
+                                            <th>Status Progress</th>
                                             <th>Tanggal Update</th>
                                             <th>Detail Pekerjaan</th>
+                                            <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -291,7 +292,16 @@
                                             <tr>
                                                 <td>{{ $tracking->po_number }}</td>
                                                 <td>{{ $tracking->employee->name }}</td>
-                                                <td>{{ $tracking->departement->name }}</td>
+                                                <td class="text-danger">{{ $tracking->progress_po->name }}</td>
+
+                                                {{-- @if (Auth::user()->departement_id == 1)
+                                                    <td class="text-danger">{{ $tracking->production_po->name }}</td>
+                                                @elseif (Auth::user()->departement_id == 2)
+                                                    <td class="text-danger">{{ $tracking->finance_po->name }}</td>
+                                                @elseif (Auth::user()->departement_id == 3)
+                                                    <td class="text-danger">{{ $tracking->marketing_po }}</td>
+                                                @endif --}}
+
                                                 <td>{{ $tracking->status->name }}</td>
                                                 <td>{{ $tracking->date }}</td>
                                                 <td>{{ $tracking->description }}</td>
@@ -392,30 +402,31 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="departement"
-                                                                                class="form-label">Departemen</label>
+                                                                            <label for="progress_po"
+                                                                                class="form-label">Progress PO</label>
                                                                             <select class="form-select"
-                                                                                name="departement_id" id="category">
-                                                                                @foreach ($departements as $departement)
-                                                                                    @if ($tracking->departement_id == $departement->id)
+                                                                                name="progress_po_id"
+                                                                                id="progress_po">
+                                                                                @foreach ($progress_pos as $progress_po)
+                                                                                    @if ($tracking->progress_po_id == $progress_po->id)
                                                                                         <option
-                                                                                            value="{{ $departement->id }}"
+                                                                                            value="{{ $progress_po->id }}"
                                                                                             selected>
-                                                                                            {{ $departement->name }}
+                                                                                            {{ $progress_po->name }}
                                                                                         </option>
                                                                                     @else
                                                                                         <option
-                                                                                            value="{{ $departement->id }}">
-                                                                                            {{ $departement->name }}
+                                                                                            value="{{ $progress_po->id }}">
+                                                                                            {{ $progress_po->name }}
                                                                                         </option>
                                                                                     @endif
                                                                                 @endforeach
                                                                             </select>
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="status"
-                                                                                class="form-label">Tahap
-                                                                                Pekerjaan</label>
+                                                                            <label for="status" class="form-label">
+                                                                                Status Progress
+                                                                            </label>
                                                                             <select class="form-select"
                                                                                 name="status_id" id="status">
                                                                                 @foreach ($statuses as $status)

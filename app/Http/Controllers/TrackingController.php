@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Status;
 use App\Models\Employee;
 use App\Models\Tracking;
-use App\Models\Departement;
+use App\Models\FinancePo;
+use App\Models\MarketingPo;
+use App\Models\ProductionPo;
 use Illuminate\Http\Request;
-use App\Models\TrackingImage;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\ProgressPo;
 use Illuminate\Support\Facades\Auth;
 
 class TrackingController extends Controller
@@ -20,18 +21,13 @@ class TrackingController extends Controller
     public function index()
     {
 
-        if (Auth::user()->role_id == 1) {
-            $trackings = Tracking::all();
-        } else if (Auth::user()->role_id == 3) {
-            $trackings = Tracking::all();
-        } else {
-            $trackings = Tracking::where('departement_id', 1)->get();
-        }
+        $trackings = Tracking::all();
+        $progress_po = ProgressPo::all();
 
         return view('dashboard', [
             'trackings' => $trackings,
             'statuses' => Status::all(),
-            'departements' => Departement::all(),
+            'progress_pos' => $progress_po,
             'employees' => Employee::all(),
         ]);
     }
@@ -49,12 +45,15 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
+        // die();
         // validasi input dari form
         $validatedData = $request->validate([
             'po_number' => 'required',
             'employee_id' => 'required',
-            'departement_id' => 'required',
             'status_id' => 'required',
+            'departement_id' => '',
+
             'date' => 'required',
             'description' => 'required',
             'image' => 'required|image|file|max:3024',
@@ -63,6 +62,21 @@ class TrackingController extends Controller
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('tracking-images');
         }
+
+        $validatedData['departement_id'] = Auth::user()->departement_id;
+        $validatedData['progress_po_id'] = $request->progress_po_id;
+
+        // if (Auth::user()->departement_id == 1) {
+        //     $validatedData['production_po_id'] = $request->progress_po_id;
+        // }
+
+        // if (Auth::user()->departement_id == 2) {
+        //     $validatedData['finance_po_id'] = $request->progress_po_id;
+        // }
+
+        // if (Auth::user()->departement_id == 3) {
+        //     $validatedData['marketing_po_id'] = $request->progress_po_id;
+        // }
 
         Tracking::create($validatedData);
 
@@ -96,7 +110,7 @@ class TrackingController extends Controller
         $tracking = Tracking::find($id);
         $tracking->po_number = $request->input('po_number');
         $tracking->employee_id = $request->input('employee_id');
-        $tracking->departement_id = $request->input('departement_id');
+        $tracking->progress_po_id = $request->input('progress_po_id');
         $tracking->status_id = $request->input('status_id');
         $tracking->date = $request->input('date');
         $tracking->description = $request->input('description');

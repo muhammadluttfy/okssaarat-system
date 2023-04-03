@@ -30,4 +30,24 @@ class Tracking extends Model
     {
         return $this->hasMany(TrackingImage::class);
     }
+
+    public function progress_po()
+    {
+        return $this->belongsTo(ProgressPo::class);
+    }
+
+    public function production_po()
+    {
+        return $this->belongsTo(ProductionPo::class);
+    }
+
+    public function finance_po()
+    {
+        return $this->belongsTo(FinancePo::class);
+    }
+
+    public function marketing_po()
+    {
+        return $this->belongsTo(MarketingPo::class);
+    }
 }

@@ -30,8 +30,25 @@ Route::get('/tracking', function (Request $request) {
 
     $trackings = $trackings->get();
 
-    return view('welcome', compact('trackings', 'search'));
+    $tracking_starts = Tracking::query()->where('status_id', '=', 1);
+    $tracking_processes = Tracking::query()->where('status_id', '=', 2);
+    $tracking_finishes = Tracking::query()->where('status_id', '=', 3);
+
+    if ($search) {
+        $tracking_starts->where('po_number', 'like', '%' . $search . '%');
+        $tracking_processes->where('po_number', 'like', '%' . $search . '%');
+        $tracking_finishes->where('po_number', 'like', '%' . $search . '%');
+    }
+
+    // dd($tracking_starts->toSql(), $tracking_starts->getBindings());
+
+    $tracking_starts = $tracking_starts->get();
+    $tracking_processes = $tracking_processes->get();
+    $tracking_finishes = $tracking_finishes->get();
+
+    return view('welcome', compact('trackings', 'tracking_starts', 'tracking_processes', 'tracking_finishes', 'search'));
 })->name('root');
+
 
 
 

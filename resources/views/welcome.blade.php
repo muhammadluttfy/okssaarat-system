@@ -285,41 +285,169 @@
         </section>
 
 
-        <!-- Work Tracking (Steps) -->
-        <section class="container my-5">
-            @if ($search && $trackings->count() > 0)
-                <h2 class="mb-5 text-center h1">Work Progress Tracking</h2>
-            @endif
-            <div class="steps">
-                @if ($search && $trackings->count() > 0)
-                    <div class="row">
-                        @foreach ($trackings as $tracking)
-                            <div class="pt-0 pb-5 step pt-md-3">
-                                <div class="step-number">
-                                    <div class="step-number-inner">{{ $loop->iteration }}</div>
-                                </div>
-                                <div class="step-body d-flex align-items-center ps-xl-5">
-                                    <div class="flex-shrink-0 mx-4 rellax d-none d-lg-block mx-xl-5"
-                                        data-rellax-percentage="0.5" data-rellax-speed="-0.3"
-                                        data-disable-parallax-down="lg">
-                                        <img src="{{ asset('storage/' . $tracking->image) }}" class="d-dark-mode-none"
-                                            width="306" alt="Illustration">
-                                    </div>
 
-                                    <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
-                                        data-rellax-speed="0.4" data-disable-parallax-down="lg">
-                                        <h3 class="h4">{{ $tracking->status->name }}</h3>
-                                        <p class="mb-0">{{ $tracking->description }}</p>
-                                    </div>
+        <!-- Work Tracking (Steps) -->
+        <section class="container pt-5 pb-2 mt-3 mt-sm-4 mt-xl-5">
+            {{-- @if ($search && $trackings->count() > 0) --}}
+            <h2 class="pb-3 text-center h1 pb-lg-4">Work Progress Tracking</h2>
+            {{-- @endif --}}
+
+            <!-- Nav tabs -->
+            <ul class="pb-2 mb-3 overflow-auto nav nav-tabs flex-nowrap justify-content-lg-center mb-lg-4"
+                role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-nowrap active" id="project-management-tab" data-bs-toggle="tab"
+                        data-bs-target="#project-management" type="button" role="tab"
+                        aria-controls="project-management" aria-selected="true">
+                        <i class="bx bx-star fs-lg opacity-60 me-2"></i>
+                        Start
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-nowrap" id="remote-work-tab" data-bs-toggle="tab"
+                        data-bs-target="#remote-work" type="button" role="tab" aria-controls="remote-work"
+                        aria-selected="false" tabindex="-1">
+                        <i class="bx bx-briefcase-alt-2 fs-lg opacity-60 me-2"></i>
+                        Process
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-nowrap" id="product-release-tab" data-bs-toggle="tab"
+                        data-bs-target="#product-release" type="button" role="tab"
+                        aria-controls="product-release" aria-selected="false" tabindex="-1">
+                        <i class="bx bx-rocket fs-lg opacity-60 me-2"></i>
+                        Finish
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="py-4 tab-content bg-secondary rounded-3">
+
+                <!-- Start -->
+                <div class="tab-pane fade active show" id="project-management" role="tabpanel"
+                    aria-labelledby="project-management-tab">
+                    <div class="px-3 pt-3 row align-items-center pt-sm-4 pt-md-0 px-sm-4 px-lg-0">
+                        <div class="steps">
+                            @if ($search && $tracking_starts->count() > 0)
+                                <div class="row">
+                                    @foreach ($tracking_starts as $tracking)
+                                        <div class="pt-0 pb-5 step pt-md-3">
+                                            <div class="step-number">
+                                                <div class="step-number-inner">{{ $loop->iteration }}</div>
+                                            </div>
+                                            <div class="step-body d-flex align-items-center ps-xl-5">
+                                                <div class="flex-shrink-0 mx-4 rellax d-none d-lg-block mx-xl-5"
+                                                    data-rellax-percentage="0.5" data-rellax-speed="-0.3"
+                                                    data-disable-parallax-down="lg">
+                                                    <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                        class="d-dark-mode-none" width="306" alt="Illustration">
+                                                    <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                        class="d-none d-dark-mode-block" width="306"
+                                                        alt="Illustration">
+                                                </div>
+
+                                                <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
+                                                    data-rellax-speed="0.4" data-disable-parallax-down="lg">
+                                                    <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    <p class="mb-0">{{ $tracking->description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            </div>
-                        @endforeach
+                            @elseif ($search && $tracking_starts->count() == 0)
+                                <div class="row">
+                                    <b class="ms-3 text-danger">No results found</b>
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                @elseif ($search && $trackings->count() == 0)
-                    <p>No results found</p>
-                @endif
+                </div>
+
+                <!-- Process -->
+                <div class="tab-pane fade" id="remote-work" role="tabpanel" aria-labelledby="remote-work-tab">
+                    <div class="px-3 pt-3 pb-2 row align-items-center pb-sm-3 pt-sm-4 pt-md-0 px-sm-4 px-lg-0">
+                        <div class="steps">
+                            @if ($search && $tracking_processes->count() > 0)
+                                <div class="row">
+                                    @foreach ($tracking_processes as $tracking)
+                                        <div class="pt-0 pb-5 step pt-md-3">
+                                            <div class="step-number">
+                                                <div class="step-number-inner">{{ $loop->iteration }}</div>
+                                            </div>
+                                            <div class="step-body d-flex align-items-center ps-xl-5">
+                                                <div class="flex-shrink-0 mx-4 rellax d-none d-lg-block mx-xl-5"
+                                                    data-rellax-percentage="0.5" data-rellax-speed="-0.3"
+                                                    data-disable-parallax-down="lg">
+                                                    <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                        class="d-dark-mode-none" width="306" alt="Illustration">
+                                                    <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                        class="d-none d-dark-mode-block" width="306"
+                                                        alt="Illustration">
+                                                </div>
+
+                                                <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
+                                                    data-rellax-speed="0.4" data-disable-parallax-down="lg">
+                                                    <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    <p class="mb-0">{{ $tracking->description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @elseif ($search && $tracking_processes->count() == 0)
+                                <div class="row">
+                                    <b class="ms-3 text-danger">No results found</b>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finish -->
+                <div class="tab-pane fade" id="product-release" role="tabpanel"
+                    aria-labelledby="product-release-tab">
+                    <div class="px-3 pt-3 row align-items-center pt-sm-4 pt-md-0 pe-sm-4 pe-md-0 ps-sm-4 ps-lg-0">
+                        <div class="steps">
+                            @if ($search && $tracking_finishes->count() > 0)
+                                <div class="row">
+                                    @foreach ($tracking_finishes as $tracking)
+                                        <div class="pt-0 pb-5 step pt-md-3">
+                                            <div class="step-number">
+                                                <div class="step-number-inner">{{ $loop->iteration }}</div>
+                                            </div>
+                                            <div class="step-body d-flex align-items-center ps-xl-5">
+                                                <div class="flex-shrink-0 mx-4 rellax d-none d-lg-block mx-xl-5"
+                                                    data-rellax-percentage="0.5" data-rellax-speed="-0.3"
+                                                    data-disable-parallax-down="lg">
+                                                    <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                        class="d-dark-mode-none" width="306" alt="Illustration">
+                                                    <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                        class="d-none d-dark-mode-block" width="306"
+                                                        alt="Illustration">
+                                                </div>
+
+                                                <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
+                                                    data-rellax-speed="0.4" data-disable-parallax-down="lg">
+                                                    <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    <p class="mb-0">{{ $tracking->description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @elseif ($search && $tracking_finishes->count() == 0)
+                                <div class="row">
+                                    <b class="ms-3 text-danger">No results found</b>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
 
 
         <!-- FAQ (Accordion) -->
