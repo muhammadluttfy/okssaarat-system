@@ -343,11 +343,11 @@
                                                 <td>
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="border-0 badge bg-secondary"
+                                                    {{-- <button type="button" class="border-0 badge bg-secondary"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#updateModal{{ $tracking->id }}">
                                                         Ubah
-                                                    </button>
+                                                    </button> --}}
 
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="updateModal{{ $tracking->id }}"

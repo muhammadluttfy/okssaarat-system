@@ -91,38 +91,11 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Maxum',
             ],
-        ]);
-
-        ProductionPo::insert([
             [
-                'name' => 'Printing',
+                'name' => 'Fitri',
             ],
             [
-                'name' => 'Finishing',
-            ],
-            [
-                'name' => 'Packaging',
-            ],
-            [
-                'name' => 'Delifery',
-            ],
-        ]);
-
-        FinancePo::insert([
-            [
-                'name' => 'Procurement (Purchasing)',
-            ],
-            [
-                'name' => 'Payment',
-            ],
-        ]);
-
-        MarketingPo::insert([
-            [
-                'name' => 'Create & Release PO',
-            ],
-            [
-                'name' => 'Product Receive',
+                'name' => 'Ros',
             ],
         ]);
 
