@@ -341,16 +341,51 @@
                                                     data-rellax-percentage="0.5" data-rellax-speed="-0.3"
                                                     data-disable-parallax-down="lg">
                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                        class="d-dark-mode-none" width="306" alt="Illustration">
+                                                        class="rounded d-dark-mode-none" width="306"
+                                                        alt="Illustration">
                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                        class="d-none d-dark-mode-block" width="306"
+                                                        class="rounded d-none d-dark-mode-block" width="306"
                                                         alt="Illustration">
                                                 </div>
 
                                                 <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
                                                     data-rellax-speed="0.4" data-disable-parallax-down="lg">
-                                                    <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+
+                                                    <!-- Button trigger modal -->
+                                                    <a href="javascript:;" type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#showingImage{{ $tracking->id }}">
+                                                        <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    </a>
+
                                                     <p class="mb-0">{{ $tracking->description }}</p>
+                                                </div>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="showingImage{{ $tracking->id }}"
+                                                    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="showingImage{{ $tracking->id }}"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5"
+                                                                    id="showingImage{{ $tracking->id }}">
+                                                                    {{ $tracking->progress_po->name }}
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                                    class="rounded img-fluid" alt="">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -381,16 +416,48 @@
                                                     data-rellax-percentage="0.5" data-rellax-speed="-0.3"
                                                     data-disable-parallax-down="lg">
                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                        class="d-dark-mode-none" width="306" alt="Illustration">
+                                                        class="rounded d-dark-mode-none" width="306"
+                                                        alt="Illustration">
                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                        class="d-none d-dark-mode-block" width="306"
+                                                        class="rounded d-none d-dark-mode-block" width="306"
                                                         alt="Illustration">
                                                 </div>
 
                                                 <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
                                                     data-rellax-speed="0.4" data-disable-parallax-down="lg">
-                                                    <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    <!-- Button trigger modal -->
+                                                    <a href="javascript:;" type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#showingImage{{ $tracking->id }}">
+                                                        <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    </a>
                                                     <p class="mb-0">{{ $tracking->description }}</p>
+                                                </div>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="showingImage{{ $tracking->id }}"
+                                                    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="showingImage{{ $tracking->id }}"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5"
+                                                                    id="showingImage{{ $tracking->id }}">
+                                                                    {{ $tracking->progress_po->name }}
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                                    class="rounded img-fluid" alt="">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -422,16 +489,48 @@
                                                     data-rellax-percentage="0.5" data-rellax-speed="-0.3"
                                                     data-disable-parallax-down="lg">
                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                        class="d-dark-mode-none" width="306" alt="Illustration">
+                                                        class="rounded d-dark-mode-none" width="306"
+                                                        alt="Illustration">
                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                        class="d-none d-dark-mode-block" width="306"
+                                                        class="rounded d-none d-dark-mode-block" width="306"
                                                         alt="Illustration">
                                                 </div>
 
                                                 <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5"
                                                     data-rellax-speed="0.4" data-disable-parallax-down="lg">
-                                                    <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    <!-- Button trigger modal -->
+                                                    <a href="javascript:;" type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#showingImage{{ $tracking->id }}">
+                                                        <h3 class="h4">{{ $tracking->progress_po->name }}</h3>
+                                                    </a>
                                                     <p class="mb-0">{{ $tracking->description }}</p>
+                                                </div>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="showingImage{{ $tracking->id }}"
+                                                    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="showingImage{{ $tracking->id }}"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5"
+                                                                    id="showingImage{{ $tracking->id }}">
+                                                                    {{ $tracking->progress_po->name }}
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img src="{{ asset('storage/' . $tracking->image) }}"
+                                                                    class="rounded img-fluid" alt="">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

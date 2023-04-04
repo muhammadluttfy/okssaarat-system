@@ -309,7 +309,8 @@
                                                     <a href="javascript:;" data-bs-toggle="modal"
                                                         data-bs-target="#imgPreviewModal{{ $tracking->id }}">
                                                         <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                            alt="" width="50">
+                                                            class="rounded img-fluid" alt="" width="80"
+                                                            height="80">
                                                     </a>
 
                                                     <!-- Modal -->
@@ -330,7 +331,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <img src="{{ asset('storage/' . $tracking->image) }}"
-                                                                        alt="" width="400">
+                                                                        alt="" class="rounded img-fluid">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
