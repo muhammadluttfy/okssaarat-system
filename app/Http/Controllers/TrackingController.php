@@ -63,8 +63,9 @@ class TrackingController extends Controller
             $validatedData['image'] = $request->file('image')->store('tracking-images');
         }
 
-        $validatedData['departement_id'] = Auth::user()->departement_id;
+        $validatedData['departement_id'] = Auth::user()->departement_id; 
         $validatedData['progress_po_id'] = $request->progress_po_id;
+        $validatedData['user_id'] = Auth::user()->id; 
 
         // if (Auth::user()->departement_id == 1) {
         //     $validatedData['production_po_id'] = $request->progress_po_id;
