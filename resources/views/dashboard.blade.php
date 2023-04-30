@@ -342,13 +342,13 @@
                                                     </div>
                                                 </td>
                                                 <td>
-
+                                                @if($tracking->user_id == Auth::user()->id)
                                                     <!-- Button trigger modal -->
-                                                    {{-- <button type="button" class="border-0 badge bg-secondary"
+                                                    <button type="button" class="border-0 badge bg-secondary"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#updateModal{{ $tracking->id }}">
                                                         Ubah
-                                                    </button> --}}
+                                                    </button>
 
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="updateModal{{ $tracking->id }}"
@@ -490,13 +490,14 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
+                                                    
                                                     <form action="{{ route('data.tracking.destroy', $tracking->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         <button type="submit"
                                                             class="border-0 badge bg-danger">Hapus</span></button>
                                                     </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
